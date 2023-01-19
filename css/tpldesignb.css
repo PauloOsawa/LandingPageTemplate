@@ -349,3 +349,4 @@ input::placeholder, input::-moz-placeholder { opacity: .4; }
   .dvfooter > div :is(p, address, a){ width: 100%; text-align: center; }
   .dvlinks .socialinks ul { justify-content: center; }
 }
+@media (max-width: 420px) { .forms { width: 98%; margin: 0 auto; } }
