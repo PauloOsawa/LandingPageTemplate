@@ -54,7 +54,10 @@ const winOnload = () => {
     carsel.children[i].classList.add('active');
     actv = i; setTimeout(() => scrolToActv(), 100);
   }
-  carsel.querySelectorAll('.cont').forEach((cont, i) => { cont.onfocus = (e) => setActv(i);  })
+  carsel.querySelectorAll('.cont').forEach((cont, i) => { 
+    cont.onfocus = (e) => setActv(i);
+    cont.onpointerdown = (e) => setActv(i);
+  })
   const gira = (e, i) => {
     e.stopPropagation(); const t = actv + i;
     if(t >= 0 && t < carsel.children.length){ carsel.children[t].focus(); }
@@ -95,6 +98,7 @@ const winOnload = () => {
       frm.reset();
       spncount.textContent = 300;
       setTimeout(() => {
+        frm.scrollIntoView({ block:'start', behavior: 'smooth'});
         frm.querySelector('.msgfrm').textContent = "Cadastro Validado!";
         frm.classList.toggle('msgshow');
         frm.setAttribute('disabled', 'true');
@@ -112,7 +116,9 @@ const winOnload = () => {
       const cp = inp.getAttribute('placeholder').replace(':', '').replace('-', '').toLowerCase();
       err = (inp.required && (!inp.value || inp.validity.valueMissing)) || inp.validity.patternMismatch;
       const retErro = () => {
-        inp.setCustomValidity(objValids[cp][1]); inp.reportValidity();
+        inp.setCustomValidity(objValids[cp][1]); 
+        inp.scrollIntoView({ block:'start', behavior: 'smooth'});
+        inp.reportValidity();
         inp.setCustomValidity(''); objInputs = {}; return;
       }
       if (err) { return retErro(); }
