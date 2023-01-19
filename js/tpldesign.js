@@ -52,7 +52,9 @@ const winOnload = () => {
     if (actv === i || !(i >= 0 && i < carsel.children.length)) { return; }
     document.querySelector('.active').classList.remove('active');
     carsel.children[i].classList.add('active');
-    actv = i; setTimeout(() => scrolToActv(), 100);
+    actv = i; 
+    scrolToActv();
+    // setTimeout(() => scrolToActv(), 100);
   }
   carsel.querySelectorAll('.cont').forEach((cont, i) => { 
     cont.onfocus = (e) => setActv(i);
