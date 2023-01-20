@@ -54,7 +54,6 @@ const winOnload = () => {
     carsel.children[i].classList.add('active');
     actv = i; 
     scrolToActv();
-    // setTimeout(() => scrolToActv(), 100);
   }
   carsel.querySelectorAll('.cont').forEach((cont, i) => { 
     cont.onfocus = (e) => setActv(i);
